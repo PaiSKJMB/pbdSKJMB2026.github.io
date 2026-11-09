@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard PBD Matang Buluh</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">
+    <img class="logo" src="assets/logo.png" alt="Logo Sekolah Kebangsaan Jalan Matang Buluh, Bagan Serai" width="84" height="76">
+    <div>
+    <div class="tag">SK Jalan Matang Buluh · PBD 2026</div>
+    <h1>DASHBOARD PENCAPAIAN PBD<br>PENDIDIKAN ISLAM &amp; PELAJARAN JAWI</h1>
+    <p class="sub">Pendidikan Islam dilaporkan bagi Tahun 1 hingga 6. Pelajaran Jawi dilaporkan bagi Tahun 4 hingga 6. Semua angka di bawah mengikut penapis yang dipilih.</p>
+    </div>
+  </div>
+</header>
+
+<section class="panel filters" aria-label="Penapis">
+  <div class="fg"><span>Mata pelajaran</span>
+    <select id="f-subj" aria-label="Mata pelajaran"></select></div>
+  <div class="fg"><span>Tahun</span>
+    <select id="f-year" aria-label="Tahun"></select></div>
+  <div class="fg"><span>Kelas</span>
+    <select id="f-kelas" aria-label="Kelas"></select></div>
+  <div class="fg"><span>Tahap penguasaan</span>
+    <select id="f-thr" aria-label="Tahap penguasaan"></select></div>
+  <button class="reset" id="reset" type="button">Set semula</button>
+  <div class="hint" style="flex-basis:100%">Pilih "Semua" pada Tahun atau Kelas untuk melihat keseluruhan. Tahap penguasaan menentukan TP minimum yang dikira "mencapai", iaitu TP yang dipilih dan ke atas. "Semua TP" mengira semua murid.</div>
+</section>
+
+<section class="panel sumwrap" aria-label="Ringkasan utama"><div class="sum" id="sum"></div></section>
+
+<section class="kpis" id="kpis" aria-label="Petunjuk prestasi utama"></section>
+
+<section class="grid2">
+  <div class="panel">
+    <div class="ch-h"><h2>Taburan TP mengikut tahun dan bahagian</h2>
+      <div class="seg" role="group" aria-label="Unit"><button type="button" id="m-pct" aria-pressed="true">Peratus</button><button type="button" id="m-n" aria-pressed="false">Bilangan murid</button></div></div>
+    <div class="legend" id="legend" style="margin-bottom:8px"></div>
+    <div class="cbox"><canvas id="c-stack" role="img" aria-label="Carta bar bertindan taburan TP mengikut tahun"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="ch-h"><h2>Pecahan TP (carta pai)</h2></div>
+    <p class="hint" style="margin:0 0 8px">Klik pada kepingan pai, peratus atau bilangan murid untuk melihat senarai nama.</p>
+    <div class="pies" id="pies"></div>
+  </div>
+</section>
+
+<section class="panel" id="roster" hidden>
+  <div class="ch-h"><h2 id="r-title">Senarai murid</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="search" id="r-q" placeholder="Cari nama murid" aria-label="Cari nama murid"><button type="button" class="chip" id="r-close">Tutup senarai</button></div></div>
+  <div class="tw"><table id="r-tbl" class="r"></table></div>
+</section>
+
+<section class="panel">
+  <div class="ch-h"><h2>Peratus murid mencapai tahap penguasaan mengikut kelas</h2><span class="hint" id="thr-lab"></span></div>
+  <div class="legend" id="legend2" style="margin-bottom:8px"></div>
+  <div class="cbox sm"><canvas id="c-kelas" role="img" aria-label="Carta bar peratus mencapai tahap mengikut kelas"></canvas></div>
+</section>
+
+<section class="panel">
+  <div class="ch-h"><h2>Jadual terperinci</h2><span class="hint">Bilangan murid mengikut TP. Baris tebal ialah jumlah setiap tahun.</span></div>
+  <div class="tw"><table id="tbl"></table></div>
+</section>
+
+<section class="cols">
+  <div class="panel"><h2>Rumusan ringkas</h2><ul class="ins" id="ins"></ul></div>
+  <div class="panel"><h2>Cadangan tindakan seterusnya</h2><ol class="act" id="act"></ol></div>
+</section>
+
+<div class="note" id="dnote"></div>
+<footer>Sumber: PENCAPAIAN_PBD_PENDIDIKAN_ISLAM_SK_JALAN_MATANG_BULUH_2026.csv dan PENCAPAIAN_PBD_PELAJARAN_JAWI_SK_JALAN_MATANG_BULUH_2026.xlsx. Halaman ini mengandungi nama murid (dipaparkan apabila anda klik pada carta pai). Kongsi pautan hanya dengan guru yang berkenaan.</footer>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
